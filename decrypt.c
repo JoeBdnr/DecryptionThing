@@ -56,6 +56,9 @@ int main(int argc, char **argv){
                 /*Function to change the encrypted text to plain text*/
                 while (fgets(string, max, readFile)){
                     while(string[i] != '\0') {
+                        if (string[i] == 60){
+                            break;
+                        }
                         char outchar = string[i] - 16;
                         if (outchar < 32) {
                             char outchar = (outchar - 32) + 144 ;
@@ -64,6 +67,7 @@ int main(int argc, char **argv){
                         i++;
                     }
                 }
+                fprintf(writeFile, "<CR>");
             }
             fclose(writeFile);
             fclose(readFile);
