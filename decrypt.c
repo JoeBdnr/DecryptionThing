@@ -10,7 +10,6 @@ int main(int argc, char **argv){
     int i = 0;
 
 /*Need to get the .txt (extension) off the filename*/
-/*The two text files need to be changed in a function that will encrypt/decrypt them*/
 
     // FILE * readFile = fopen("TextFile.txt", "r");
     // FILE * readFile = fopen("TextFile.txt", "r");
