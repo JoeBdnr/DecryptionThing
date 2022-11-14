@@ -2,20 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <libgen.h>
+#define max 32
 
 int main(int argc, char **argv){
     char c;
-    // printf(argv[3]);
-    // printf("\n");
-    // char *d;
-    // strcpy(d, argv[3]);
-    // printf("the length of %s is: %i", d, strlen(d));
-    // printf("\n");
-    // remove(d);
-    // char *base;
-    // strcpy(base, d);
-    // printf(d);
-    // printf("\n");
+    char string[max];
+    int i = 0;
 
 /*Need to get the .txt (extension) off the filename*/
 /*The two text files need to be changed in a function that will encrypt/decrypt them*/
@@ -23,8 +15,9 @@ int main(int argc, char **argv){
     // FILE * readFile = fopen("TextFile.txt", "r");
     // FILE * readFile = fopen("TextFile.txt", "r");
     // if (readFile){
-    //     while ((c = getc(readFile)) != EOF)
-    //         printf(/*"%02X",*/"%c", c);
+    //     while (fgets(string, max, readFile)){
+    //         printf(string);
+    //     }
     // }
 
     // FILE * writeFile = fopen("TextFile.crp", "w");
@@ -54,7 +47,7 @@ int main(int argc, char **argv){
             /*unlink(dreadFile)*/
 
         }
-        /*Just copies from txt to crp, no encryption yet*/
+
         else{
             /*Encrypt*/
             printf("Encrypted");
@@ -62,42 +55,20 @@ int main(int argc, char **argv){
             FILE * writeFile = fopen("TextFile.crp", "w");
             if (readFile && writeFile){
                 /*Function to change the encrypted text to plain text*/
-                while ((c = getc(readFile)) != EOF){
-                    putc(c, writeFile);
+                while (fgets(string, max, readFile)){
+                    while(string[i] != '\0') {
+                        char outchar = string[i] - 16;
+                        if (outchar < 32) {
+                            char outchar = (outchar - 32) + 144 ;
+                        }
+                        fprintf(writeFile, "%2x",outchar);
+                        i++;
+                    }
                 }
             }
             fclose(writeFile);
             fclose(readFile);
         }
     }
-
-    // This just prints all my arguements
-    for (int i=1; i< argc; i++) {
-        printf("\narg%d=%s", i, argv[i]);
-    }
     return 0;
 }
-
-// void crypt(int encrypt, int argc, char **argv){
-//     char c;
-//     if (encrypt){
-//         FILE * readFile = fopen("TextFile.txt", "r");
-//         FILE * writeFile = fopen("TextFile.crp", "w");
-//         if (readFile && writeFile){
-//             /*Code to change the plain text to ecrypted text*/
-//             while ((c = getc(readFile)) != EOF){
-//                 putc(c, writeFile);
-//             }
-//         }
-//     }
-//     else{
-//         FILE * readFile = fopen("TextFile.crp", "r");
-//         FILE * writeFile = fopen("TextFile.txt", "w");
-//         if (readFile && writeFile){
-//             /*Code to change the encrypted text to plain text*/
-//             while ((c = getc(readFile)) != EOF){
-//                 putc(c, writeFile);
-//             }
-//         }
-//     }
-// }
