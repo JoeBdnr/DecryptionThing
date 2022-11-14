@@ -12,7 +12,6 @@ int main(int argc, char **argv){
 /*Need to get the .txt (extension) off the filename*/
 
     // FILE * readFile = fopen("TextFile.txt", "r");
-    // FILE * readFile = fopen("TextFile.txt", "r");
     // if (readFile){
     //     while (fgets(string, max, readFile)){
     //         printf(string);
@@ -36,15 +35,14 @@ int main(int argc, char **argv){
             FILE * dreadFile = fopen("TextFile.crp", "r");
             FILE * dwriteFile = fopen("TextFile.txt", "w");
             if (dreadFile && dwriteFile){
-            /*Function to change the encrypted text to plain text*/
+            /*Function to change the encrypted text to plain text*/ //Don't work
                 while ((c = getc(dreadFile)) != EOF){
                     putc(c, dwriteFile);
                 }
             }
             fclose(dwriteFile);
             fclose(dreadFile);
-            /*unlink(dreadFile)*/
-
+            /*unlink(dreadFile)*/ //Get rid of that shit
         }
 
         else{
