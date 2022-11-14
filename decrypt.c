@@ -5,6 +5,17 @@
 
 int main(int argc, char **argv){
     char c;
+    // printf(argv[3]);
+    // printf("\n");
+    // char *d;
+    // strcpy(d, argv[3]);
+    // printf("the length of %s is: %i", d, strlen(d));
+    // printf("\n");
+    // remove(d);
+    // char *base;
+    // strcpy(base, d);
+    // printf(d);
+    // printf("\n");
 
 /*Need to get the .txt (extension) off the filename*/
 /*The two text files need to be changed in a function that will encrypt/decrypt them*/
