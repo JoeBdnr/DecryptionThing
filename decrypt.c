@@ -5,48 +5,39 @@
 int main(int argc, char **argv){
     char c;
 
-    // FILE * textFile = fopen("TextFile.txt", "r");
-    // if (textFile){
-    //     while ((c = getc(textFile)) != EOF)
-    //         // printf("%02X",/*"%c",*/ c);
-    //         printf("%02X",c);
-    //     fclose(textFile);
-    // }
-    FILE * textFile = fopen("TextFile.txt", "w");
-    if (textFile){
+    FILE * readFile = fopen("TextFile.txt", "r");
+    if (readFile){
+        while ((c = getc(readFile)) != EOF)
+            printf(/*"%02X",*/"%c", c);
+        fclose(readFile);
+    }
+    FILE * writeFile = fopen("TextFile.txt", "w");
+    if (writeFile){
             // for (char ch = 'a'; ch < 'q'; ch++) /*This one is for going character by character*/
             //     fputc(ch, textFile);
-            fprintf(textFile, "Lalala lalalalala lalala lalalalala"); /*This one does a whole line*/
-        fclose(textFile);
+            // fprintf(readFile, "Lalala lalalalala lalala lalalalala"); /*This one does a whole line*/
+        fclose(writeFile);
     }
+
+    if (! strcmp(argv[1], "cryptoMagic")){
+        for (int i=1; i< argc; i++) {
+            if (! strcmp(argv[i], "-E")){
+                /*Encrypt*/
+                printf("Encrypted");
+            }
+            else if (! strcmp(argv[i], "-D")){
+                /*Decrypt*/
+                printf("Decrypted");
+            }
+            else{
+                /*Encrypt*/
+            }
+        }
+    }
+
 
     for (int i=1; i< argc; i++) {
         printf("\narg%d=%s", i, argv[i]);
     }
     return 0;
 }
-
-
-// int main (int argc, char **argv) {
-    
-//     if(argc == 1) {
-//         printf("Need a .foo file");
-//         return 0;
-//     }
-
-//     char *ext = strrchr(argv[1], '.');
-//     if(!ext || strcmp(ext, ".foo")) {
-//         printf("Not a .foo file");
-//         return 0;
-//     }
-
-//     char *basename = (strrchr(argv[1], '\\'));
-//     if(!basename) {
-//         basename = argv[1];
-//     } else {
-//         basename++;
-//     }
-
-//     char *out_file = (char*) malloc((strlen(basename)+1)*sizeof(char));
-//     sprintf(out_file, "%.*s%s", (int) (ext - basename), basename, ".bar");
-// }
