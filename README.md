@@ -1,0 +1,1 @@
+This program receives arguments from the terminal. It will check to see if the first argument is cryptoMagic, if not, nothing will be outputted. If it is, the program will check to see if the second argument is -D, if so it will go through the decryption process, producing a .txt file. If not, it is assumed that the user wants to encrypt the file and will produce a .crp file.
