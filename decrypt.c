@@ -9,23 +9,6 @@ int main(int argc, char **argv){
     char string[max];
     int i = 0;
 
-/*Need to get the .txt (extension) off the filename*/
-
-    // FILE * readFile = fopen("TextFile.txt", "r");
-    // if (readFile){
-    //     while (fgets(string, max, readFile)){
-    //         printf(string);
-    //     }
-    // }
-
-    // FILE * writeFile = fopen("TextFile.crp", "w");
-    // if (writeFile){
-    //         // for (char ch = 'a'; ch < 'q'; ch++) /*This one is for going character by character*/
-    //         //     fputc(ch, writeFile);
-    //         fprintf(writeFile, "Message"); /*This one does a whole line*/
-    // }
-
-
     // Looks for the first arguement being cryptoMagic and then sees if the user wants to encrypt or decrypt
     if (! strcmp(argv[1], "cryptoMagic")){
         /*Just copies from crp to txt, no encryption yet*/
@@ -35,14 +18,12 @@ int main(int argc, char **argv){
             FILE * dreadFile = fopen("TextFile.crp", "r");
             FILE * dwriteFile = fopen("TextFile.txt", "w");
             if (dreadFile && dwriteFile){
-            /*Function to change the encrypted text to plain text*/ //Don't work
                 while ((c = getc(dreadFile)) != EOF){
                     putc(c, dwriteFile);
                 }
             }
             fclose(dwriteFile);
             fclose(dreadFile);
-            /*unlink(dreadFile)*/ //Get rid of that shit
         }
 
         else{
