@@ -17,8 +17,12 @@ int main(int argc, char **argv){
             FILE * dreadFile = fopen("TextFile.crp", "r");
             FILE * dwriteFile = fopen("TextFile.txt", "w");
             if (dreadFile && dwriteFile){
-                while ((c = getc(dreadFile)) != EOF){
-                    putc(c, dwriteFile);
+                while (fgets(string, max, dreadFile)){
+                    while(string[i] != '\0') {
+                        string[i] = (char)c;
+                        i++;
+                    }
+                    fprintf("%s",string[i]);
                 }
             }
             fclose(dwriteFile);
