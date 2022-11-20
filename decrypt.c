@@ -11,7 +11,6 @@ int main(int argc, char **argv){
 
     // Looks for the first arguement being cryptoMagic and then sees if the user wants to encrypt or decrypt
     if (! strcmp(argv[1], "cryptoMagic")){
-        /*Just copies from crp to txt, no encryption yet*/
         if (! strcmp(argv[2], "-D")){
             /*Decrypt*/
             printf("Decrypted");
@@ -35,9 +34,6 @@ int main(int argc, char **argv){
                 /*Function to change the encrypted text to plain text*/
                 while (fgets(string, max, readFile)){
                     while(string[i] != '\0') {
-                        if (string[i] == 60){
-                            break;
-                        }
                         char outchar = string[i] - 16;
                         if (outchar < 32) {
                             char outchar = (outchar - 32) + 144 ;
