@@ -19,9 +19,7 @@ int main(int argc, char **argv){
             FILE * dwriteFile = fopen("TextFile.txt", "w");
             if (dreadFile && dwriteFile){
                 while ((c = getc(dreadFile)) != EOF){
-                    string[i] = (char)c;
-                    fprintf(dwriteFile, "%s", string);
-                    i++;
+                    fprintf(dwriteFile, "%c", c);
                 }
             }
             fclose(dwriteFile);
