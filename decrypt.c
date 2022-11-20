@@ -22,7 +22,7 @@ int main(int argc, char **argv){
                         string[i] = (char)c;
                         i++;
                     }
-                    fprintf("%s",string[i]);
+                    fprintf(dwriteFile, "%s",string[i]);
                 }
             }
             fclose(dwriteFile);
@@ -46,7 +46,6 @@ int main(int argc, char **argv){
                         i++;
                     }
                 }
-                fprintf(writeFile, "<CR>");
             }
             fclose(writeFile);
             fclose(readFile);
