@@ -11,18 +11,17 @@ int main(int argc, char **argv){
 
     // Looks for the first arguement being cryptoMagic and then sees if the user wants to encrypt or decrypt
     if (! strcmp(argv[1], "cryptoMagic")){
+        /*Just copies from crp to txt, no encryption yet*/
         if (! strcmp(argv[2], "-D")){
             /*Decrypt*/
             printf("Decrypted");
             FILE * dreadFile = fopen("TextFile.crp", "r");
             FILE * dwriteFile = fopen("TextFile.txt", "w");
             if (dreadFile && dwriteFile){
-                while (fgets(string, max, dreadFile)){
-                    while(string[i] != '\0') {
-                        string[i] = (char)c;
-                        i++;
-                    }
-                    fprintf(dwriteFile, "%s",string[i]);
+                while ((c = getc(dreadFile)) != EOF){
+                    string[i] = (char)c;
+                    fprintf(dwriteFile, "%s", string);
+                    i++;
                 }
             }
             fclose(dwriteFile);
@@ -46,6 +45,7 @@ int main(int argc, char **argv){
                         i++;
                     }
                 }
+                fprintf(writeFile, "<CR>");
             }
             fclose(writeFile);
             fclose(readFile);
